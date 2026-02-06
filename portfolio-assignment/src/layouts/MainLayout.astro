@@ -24,3 +24,10 @@ const { title, lang = "el" } = Astro.props;
     <Footer lang={lang} />
   </body>
 </html>
+
+<style is:global>
+  /* smooth scroll */
+  html {
+    scroll-behavior: smooth;
+  }
+</style>

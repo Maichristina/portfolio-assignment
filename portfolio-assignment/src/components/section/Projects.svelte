@@ -41,7 +41,6 @@
   }
 </script>
 
-//renders
 <section id="projects" class="mt-10 p-10 bg-gray-100">
   <h2 class="text-3xl font-bold text-gray-900">
     {lang === "en" ? "My Projects" : "Τα Projects μου"}
