@@ -1,0 +1,13 @@
+---
+//social media component
+const { platform, username } = Astro.props;
+---
+
+<a
+  href={`https://www.${platform}.com/${username}`}
+  target="_blank"
+  rel="noopener noreferrer"
+  class="bg-blue-700 hover:bg-blue-600 text-white px-4 py-2 rounded-md text-xs font-bold uppercase tracking-wider transition-all shadow-sm"
+>
+  {platform}
+</a>

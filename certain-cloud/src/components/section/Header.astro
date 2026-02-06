@@ -1,0 +1,34 @@
+---
+//header-->logo,navigation component,language switcher
+import Navigation from "./Navigation.astro";
+const { pathname } = Astro.url; //url pathname
+const isEn = pathname.startsWith("/en"); //boolean flag to check if the path starts with en
+//const lang = isEn ? "en" : "el";
+
+const baseUrl = isEn ? "/en" : "";
+---
+
+<header
+  class="flex justify-between items-center p-6 bg-white shadow-md sticky top-0 z-50"
+>
+  <div class="logo font-bold text-xl text-blue-600">MyPortfolio</div>
+
+  <nav>
+    <Navigation isEn={isEn} baseUrl={baseUrl} />
+  </nav>
+
+  <div class="language-switcher flex gap-2">
+    <a
+      href="/"
+      class={`px-3 py-1 border rounded transition ${!isEn ? "bg-blue-600 text-white border-blue-600" : "hover:bg-gray-100 text-gray-600"}`}
+    >
+      EL
+    </a>
+    <a
+      href="/en/"
+      class={`px-3 py-1 border rounded transition ${isEn ? "bg-blue-600 text-white border-blue-600" : "hover:bg-gray-100 text-gray-600"}`}
+    >
+      EN
+    </a>
+  </div>
+</header>

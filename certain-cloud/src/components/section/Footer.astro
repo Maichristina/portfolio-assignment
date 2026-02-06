@@ -1,0 +1,38 @@
+---
+//contact information,social links
+import Social from "./Social.astro";
+const { pathname } = Astro.url;
+const isEn = pathname.startsWith("/en");
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="bg-gray-900 text-gray-300 py-12 mt-20 border-t border-gray-800">
+  <div
+    class="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-12 text-center md:text-left"
+  >
+    <div class="space-y-4">
+      <h3 class="text-white text-xl font-bold tracking-tight">
+        Web Developer Portfolio
+      </h3>
+    </div>
+
+    <div>
+      <h3 class="text-lg font-semibold mb-4">
+        {isEn ? "Contact" : "Επικοινωνία"}
+      </h3>
+      <p class="text-gray-400">Email: christinamai1703@gmail.com</p>
+      <div class="mt-4 flex justify-center md:justify-start gap-4">
+        <Social platform="linkedin" username="in/christina-mai-249159341" />
+        <Social platform="github" username="Maichristina" />
+      </div>
+    </div>
+  </div>
+  <div
+    class="text-center mt-10 border-t border-gray-700 pt-6 text-gray-500 text-sm"
+  >
+    <p>
+      &copy; {currentYear}
+      {isEn ? "- All Rights Reserved." : "-Όλα τα δικαιώματα διατηρούνται"}
+    </p>
+  </div>
+</footer>

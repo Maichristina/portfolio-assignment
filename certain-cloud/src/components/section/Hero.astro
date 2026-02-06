@@ -1,0 +1,46 @@
+---
+const { lang } = Astro.props;
+
+const content = {
+  el: {
+    title: "Χριστίνα Μάη",
+    tagline: "Web Developer ",
+    ctaP: "Δείτε τη δουλειά μου",
+    ctaA: "Μάθετε περισσότερα για μένα",
+  },
+  en: {
+    title: "Christina Mai",
+    tagline: "Web Developer ",
+    ctaP: "View my work",
+    ctaA: "Learn More About Me",
+  },
+};
+
+const t = lang === "en" ? content.en : content.el;
+---
+
+<section
+  class="min-h-[70vh] flex flex-col items-center justify-center text-center px-4 bg-white"
+>
+  <h1 class="text-4xl md:text-6xl font-bold text-gray-900 mb-4">
+    {t.title}
+  </h1>
+
+  <p class="text-lg md:text-xl text-gray-600 max-w-2xl mb-8">
+    {t.tagline}
+  </p>
+  <div class="flex flex-col md:flex-row gap-4 justify-center mt-8">
+    <a
+      href="#about"
+      class="bg-blue-600 text-white font-bold py-3 px-8 rounded-lg transition-all hover:bg-blue-700"
+    >
+      {t.ctaA}
+    </a>
+    <a
+      href="#projects"
+      class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg transition-all"
+    >
+      {t.ctaP}
+    </a>
+  </div>
+</section>

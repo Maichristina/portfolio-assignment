@@ -1,0 +1,19 @@
+---
+//main menu links.props to show the correct link based on the selected language
+const { isEn, baseUrl } = Astro.props;
+---
+
+<div class="nav-links flex gap-6 font-medium text-gray-700">
+  <a href={`${baseUrl}/`} class="hover:text-blue-500 transition">
+    {isEn ? "Home" : "Αρχική"}
+  </a>
+  <a href="#about" class="hover:text-blue-500 transition">
+    {isEn ? "About" : "Σχετικά"}
+  </a>
+  <a href="#projects" class="hover:text-blue-500 transition">
+    {isEn ? "Projects" : "Έργα"}
+  </a>
+  <a href="#contact" class="hover:text-blue-500 transition">
+    {isEn ? "Contact" : "Επικοινωνία"}
+  </a>
+</div>

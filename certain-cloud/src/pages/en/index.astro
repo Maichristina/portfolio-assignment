@@ -1,0 +1,18 @@
+---
+import MainLayout from "../../layouts/MainLayout.astro";
+import Hero from "../../components/section/Hero.astro";
+import AboutMe from "../../components/section/AboutMe.svelte";
+import Projects from "../../components/section/Projects.svelte";
+import ContactForm from "../../components/section/ContactForm.svelte";
+
+const lang = "en";
+---
+
+<MainLayout title="Home Page" lang={lang}>
+  <Hero lang={lang} />
+  <AboutMe client:only="load" lang={lang} />
+  <div id="projects">
+    <Projects client:visible lang={lang} />
+  </div>
+  <ContactForm client:visible lang={lang} />
+</MainLayout>

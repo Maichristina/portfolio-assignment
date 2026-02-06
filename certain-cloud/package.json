@@ -1,0 +1,24 @@
+{
+  "name": "portfolio-assignment",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/react": "^4.4.2",
+    "@astrojs/svelte": "^7.2.5",
+    "@astrojs/tailwind": "^6.0.2",
+    "@types/react": "^19.2.9",
+    "@types/react-dom": "^19.2.3",
+    "astro": "^5.16.15",
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3",
+    "svelte": "^5.49.1",
+    "tailwindcss": "^3.4.17",
+    "typescript": "^5.9.3"
+  }
+}
