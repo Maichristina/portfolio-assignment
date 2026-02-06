@@ -24,8 +24,8 @@ Follow these steps to run the project locally:
 
 1.**Clone the repository:**
 '''bash
-git clone link
-cd onoma fakelou
+git clone https://github.com/Maichristina/portfolio-assignment
+cd portfolio-assignment
 
 2.**Install dependencies:**
 npm install
