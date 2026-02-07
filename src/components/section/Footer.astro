@@ -1,10 +1,8 @@
 ---
 //contact information,social links
 import Social from "./Social.astro";
-const { pathname } = Astro.url;
-
 const currentYear = new Date().getFullYear();
-const { lang = "el" } = Astro.props;
+const { lang } = Astro.props;
 
 const content = {
   el: {

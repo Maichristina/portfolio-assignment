@@ -1,8 +1,7 @@
 ---
 import Navigation from "./Navigation.astro";
-const { pathname } = Astro.url;
-const isEn = pathname.startsWith("/en");
-const baseUrl = isEn ? "/en" : "";
+
+const { lang } = Astro.props;
 ---
 
 <header class="bg-white shadow-md sticky top-0 z-50">
@@ -10,19 +9,19 @@ const baseUrl = isEn ? "/en" : "";
     <div class="logo font-bold text-xl text-blue-600">MyPortfolio</div>
 
     <nav class="hidden md:block">
-      <Navigation isEn={isEn} baseUrl={baseUrl} />
+      <Navigation lang={lang} />
     </nav>
 
     <div class="flex items-center gap-4">
       <div class="language-switcher flex gap-1 text-sm">
         <a
-          href="/"
-          class={`px-2 py-1 border rounded ${!isEn ? "bg-blue-600 text-white" : "text-gray-600"}`}
+          href="/el/"
+          class={`px-2 py-1 border rounded ${lang === "el" ? "bg-blue-600 text-white" : "text-gray-600"}`}
           >EL</a
         >
         <a
           href="/en/"
-          class={`px-2 py-1 border rounded ${isEn ? "bg-blue-600 text-white" : "text-gray-600"}`}
+          class={`px-2 py-1 border rounded ${lang === "en" ? "bg-blue-600 text-white" : "text-gray-600"}`}
           >EN</a
         >
       </div>
@@ -44,7 +43,7 @@ const baseUrl = isEn ? "/en" : "";
   </div>
 
   <div id="mobile-menu" class="hidden bg-white border-t p-4 flex-col gap-4">
-    <Navigation isEn={isEn} baseUrl={baseUrl} />
+    <Navigation lang={lang} />
   </div>
 </header>
 
@@ -55,4 +54,16 @@ const baseUrl = isEn ? "/en" : "";
   btn?.addEventListener("click", () => {
     menu?.classList.toggle("hidden");
   });
+  const mediaQuery = window.matchMedia("(min-width: 768px)");
+
+  function handleTabletChange(e: MediaQueryListEvent | MediaQueryList) {
+    if (e.matches) {
+      menu?.classList.add("hidden");
+      menu?.classList.remove("flex");
+    }
+  }
+
+  mediaQuery.addEventListener("change", handleTabletChange);
+
+  handleTabletChange(mediaQuery);
 </script>

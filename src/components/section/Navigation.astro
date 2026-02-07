@@ -1,7 +1,7 @@
 ---
 // src/components/Navigation.astro
-const { lang = "el", baseUrl = "" } = Astro.props;
-
+const { lang } = Astro.props;
+const baseUrl = `/${lang}`;
 const content = {
   el: {
     home: "Αρχική",
