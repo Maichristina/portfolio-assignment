@@ -27,7 +27,7 @@
       errorPrefix: "Error",
     },
   };
-  const t = lang === "en" ? content.en : content.el;
+  const t = content[lang];
 
   onMount(async () => {
     try {
@@ -53,7 +53,7 @@
       class="p-4 sm:p-10 bg-gray-100"
     >
       <h2 class="text-3xl font-bold text-gray-900 mb-6">
-        {t.title}
+        {content[lang].title}
       </h2>
 
       {#if profileData}
@@ -72,7 +72,7 @@
           </p>
         </div>
       {:else if error}
-        <p class="text-red-500">{t.errorPrefix}: {error}</p>
+        <p class="text-red-500">{t.errorPrefix}: {t.error}</p>
       {:else}
         <p class="animate-pulse text-gray-500">{t.loading}</p>
       {/if}

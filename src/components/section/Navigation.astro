@@ -1,19 +1,36 @@
 ---
-//main menu links.props to show the correct link based on the selected language
-const { isEn, baseUrl } = Astro.props;
+// src/components/Navigation.astro
+const { lang = "el", baseUrl = "" } = Astro.props;
+
+const content = {
+  el: {
+    home: "Αρχική",
+    about: "Σχετικά",
+    projects: "Έργα",
+    contact: "Επικοινωνία",
+  },
+  en: {
+    home: "Home",
+    about: "About",
+    projects: "Projects",
+    contact: "Contact",
+  },
+};
+
+const t = content[lang as keyof typeof content];
 ---
 
 <div class="nav-links flex gap-6 font-medium text-gray-700">
   <a href={`${baseUrl}/`} class="hover:text-blue-500 transition">
-    {isEn ? "Home" : "Αρχική"}
+    {t.home}
   </a>
-  <a href="#about" class="hover:text-blue-500 transition">
-    {isEn ? "About" : "Σχετικά"}
+  <a href={`${baseUrl}/#about`} class="hover:text-blue-500 transition">
+    {t.about}
   </a>
-  <a href="#projects" class="hover:text-blue-500 transition">
-    {isEn ? "Projects" : "Έργα"}
+  <a href={`${baseUrl}/#projects`} class="hover:text-blue-500 transition">
+    {t.projects}
   </a>
-  <a href="#contact" class="hover:text-blue-500 transition">
-    {isEn ? "Contact" : "Επικοινωνία"}
+  <a href={`${baseUrl}/#contact`} class="hover:text-blue-500 transition">
+    {t.contact}
   </a>
 </div>

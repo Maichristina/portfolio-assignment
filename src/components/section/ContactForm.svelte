@@ -21,7 +21,7 @@
       submitBtn: "Submit",
     },
   };
-  const t = lang === "en" ? content.en : content.el;
+  const t = content[lang];
 </script>
 
 <section id="contact" class="p-10 bg-gray-50">
