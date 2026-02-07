@@ -1,10 +1,34 @@
 <script>
+  import { inview } from "svelte-inview";
+  import { fade, fly } from "svelte/transition";
   import { onMount } from "svelte";
   export let lang = "el";
 
+  let isInView = false;
   let profileData = null; //for data
   let error = null; //error handling
   //lifecycle hook,run when the component is first rendered in the browser
+
+  const content = {
+    el: {
+      title: "Λίγα λόγια για μένα",
+      who: "Ποια είμαι",
+      fiveYears: "Σε 5 χρόνια",
+      interview: "Εντυπώσεις Interview",
+      loading: "Φόρτωση δεδομένων...",
+      errorPrefix: "Σφάλμα",
+    },
+    en: {
+      title: "About Me",
+      who: "Who I am",
+      fiveYears: "In 5 years",
+      interview: "Interview Impressions",
+      loading: "Loading data...",
+      errorPrefix: "Error",
+    },
+  };
+  const t = lang === "en" ? content.en : content.el;
+
   onMount(async () => {
     try {
       const res = await fetch("/api/about.json"); //asychronous data fetching
@@ -18,33 +42,40 @@
   });
 </script>
 
-<section id="about" class="p-10 bg-gray-100">
-  <h2 class="text-3xl font-bold">
-    {lang === "en" ? "About Me" : "Λίγα λόγια για μένα"}
-  </h2>
+<div
+  use:inview={{ unobserveOnEnter: true, rootMargin: "-50px" }}
+  on:inview_enter={() => (isInView = true)}
+>
+  {#if isInView}
+    <section
+      id="about"
+      transition:fly={{ y: 50, duration: 1000 }}
+      class="p-4 sm:p-10 bg-gray-100"
+    >
+      <h2 class="text-3xl font-bold text-gray-900 mb-6">
+        {t.title}
+      </h2>
 
-  {#if profileData}
-    <div class="mt-4">
-      <p>
-        <strong>{lang === "en" ? "Who I am" : "Ποια είμαι"}:</strong>
-        {profileData.bio}
-      </p>
-      <p>
-        <strong>{lang === "en" ? "In 5 years" : "Σε 5 χρόνια"}</strong>
-        {profileData.goals}
-      </p>
-      <p>
-        <strong
-          >{lang === "en"
-            ? "Interview Impressions"
-            : "Εντυπώσεις Interview"}:</strong
-        >
-        {profileData.interviewImpression}
-      </p>
-    </div>
-  {:else if error}
-    <p class="text-red-500">Σφάλμα: {error}</p>
-  {:else}
-    <p class="animate-pulse">Φόρτωση δεδομένων...</p>
+      {#if profileData}
+        <div class="space-y-4">
+          <p>
+            <strong class="font-bold text-gray-900">{t.who}:</strong>
+            {profileData.bio}
+          </p>
+          <p>
+            <strong class="font-bold text-gray-900">{t.fiveYears}:</strong>
+            {profileData.goals}
+          </p>
+          <p>
+            <strong class="font-bold text-gray-900">{t.interview}:</strong>
+            {profileData.interviewImpression}
+          </p>
+        </div>
+      {:else if error}
+        <p class="text-red-500">{t.errorPrefix}: {error}</p>
+      {:else}
+        <p class="animate-pulse text-gray-500">{t.loading}</p>
+      {/if}
+    </section>
   {/if}
-</section>
+</div>

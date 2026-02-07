@@ -5,14 +5,40 @@ import Footer from "../components/section/Footer.astro";
 import "../styles/global.css";
 
 const { title, lang = "el" } = Astro.props;
+const seo = {
+  el: {
+    description:
+      "Portfolio Χριστίνας Μάη - Web Developer. Δείτε τα projects μου και μάθετε περισσότερα για μένα.",
+    keywords:
+      "web developer, portfolio, Χριστίνα Μάη, Astro, Svelte, προγραμματιστής",
+  },
+  en: {
+    description:
+      "Christina Mai's Web Developer Portfolio. View my projects and learn more about my professional journey.",
+    keywords:
+      "web developer, portfolio, Christina Mai, Astro, Svelte, frontend developer",
+  },
+};
+
+const currentSeo = lang === "en" ? seo.en : seo.el;
 ---
 
 <html lang={lang}>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-    <title>{title} | Portfolio</title>
-    <meta name="description" content="Web Developer Portfolio " />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>{title} | Christina Mai</title>
+    <meta name="description" content={currentSeo.description} />
+    <meta name="keywords" content={currentSeo.keywords} />
+    <meta name="author" content="Christina Mai" />
+    <meta name="robots" content="index, follow" />
+    <meta property="og:title" content={`${title} | Christina Mai`} />
+    <meta property="og:description" content={currentSeo.description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content={lang === "el" ? "el_GR" : "en_US"} />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
   </head>
   <body class="bg-gray-50 text-gray-900 min-h-screen flex flex-col">
     <Header />
@@ -29,5 +55,6 @@ const { title, lang = "el" } = Astro.props;
   /* smooth scroll */
   html {
     scroll-behavior: smooth;
+    scroll-padding-top: 80px;
   }
 </style>
