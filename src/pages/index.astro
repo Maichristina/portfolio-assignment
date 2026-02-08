@@ -12,11 +12,15 @@ const lang = "el";
 <MainLayout title="Portfolio | WebEleven Assignment">
   <Hero lang={lang} />
 
-  <AboutMe client:only="load" lang={lang} />
+  <div id="about">
+    <AboutMe client:only="load" lang={lang} />
+  </div>
 
   <div id="projects">
     <Projects client:visible lang={lang} />
   </div>
 
-  <ContactForm client:visible lang={lang} />
+  <div id="contact">
+    <ContactForm client:visible lang={lang} />
+  </div>
 </MainLayout>

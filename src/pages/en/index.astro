@@ -10,7 +10,9 @@ const lang = "en";
 
 <MainLayout title="Home Page" lang={lang}>
   <Hero lang={lang} />
-  <AboutMe client:only="load" lang={lang} />
+  <div id="about">
+    <AboutMe client:only="load" lang={lang} />
+  </div>
   <div id="projects">
     <Projects client:visible lang={lang} />
   </div>

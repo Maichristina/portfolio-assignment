@@ -47,7 +47,6 @@
 >
   {#if isInView}
     <section
-      id="about"
       transition:fly={{ y: 50, duration: 1000 }}
       class="p-4 sm:p-10 bg-gray-100"
     >
