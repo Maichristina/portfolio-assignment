@@ -21,23 +21,29 @@ const t = content[lang as keyof typeof content];
 ---
 
 <footer class="bg-gray-900 text-gray-300 py-12 mt-20 border-t border-gray-800">
-  <div class="space-y-4">
-    <h3 class="text-white text-xl font-bold tracking-tight">
-      {t.portfolioTitle}
-    </h3>
-  </div>
+  <div
+    class="max-w-7xl mx-auto px-4 flex flex-col items-center text-center gap-8"
+  >
+    <div class="space-y-4">
+      <h3 class="text-white text-xl font-bold tracking-tight">
+        {t.portfolioTitle}
+      </h3>
+    </div>
 
-  <div>
-    <h3 class="text-lg font-semibold mb-4">
-      {t.contactTitle}
-    </h3>
-    <p class="text-gray-400">Email: christinamai1703@gmail.com</p>
-    <div class="mt-4 flex justify-center md:justify-start gap-4">
-      <Social platform="linkedin" username="in/christina-mai-249159341" />
-      <Social platform="github" username="Maichristina" />
+    <div>
+      <h3 class="text-lg font-semibold mb-2">
+        {t.contactTitle}
+      </h3>
+      <p class="text-gray-400">Email: christinamai1703@gmail.com</p>
+
+      <div class="mt-4 flex justify-center gap-4">
+        <Social platform="linkedin" username="in/christina-mai-249159341" />
+        <Social platform="github" username="Maichristina" />
+      </div>
     </div>
   </div>
 </footer>
+
 <div
   class="text-center mt-10 border-t border-gray-700 pt-6 text-gray-500 text-sm"
 >

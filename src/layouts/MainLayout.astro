@@ -11,16 +11,18 @@ const seo = {
       "Portfolio Χριστίνας Μάη - Web Developer. Δείτε τα projects μου και μάθετε περισσότερα για μένα.",
     keywords:
       "web developer, portfolio, Χριστίνα Μάη, Astro, Svelte, προγραμματιστής",
+    locale: "el_GR",
   },
   en: {
     description:
       "Christina Mai's Web Developer Portfolio. View my projects and learn more about my professional journey.",
     keywords:
       "web developer, portfolio, Christina Mai, Astro, Svelte, frontend developer",
+    locale: "en_US",
   },
 };
 
-const currentSeo = lang === "en" ? seo.en : seo.el;
+const currentSeo = seo[lang as keyof typeof seo];
 ---
 
 <html lang={lang}>
@@ -37,7 +39,7 @@ const currentSeo = lang === "en" ? seo.en : seo.el;
     <meta property="og:title" content={`${title} | Christina Mai`} />
     <meta property="og:description" content={currentSeo.description} />
     <meta property="og:type" content="website" />
-    <meta property="og:locale" content={lang === "el" ? "el_GR" : "en_US"} />
+    <meta property="og:locale" content={currentSeo.locale} />
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
   </head>
   <body class="bg-gray-50 text-gray-900 min-h-screen flex flex-col">

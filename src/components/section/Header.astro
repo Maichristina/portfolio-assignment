@@ -54,10 +54,10 @@ const { lang } = Astro.props;
   btn?.addEventListener("click", () => {
     menu?.classList.toggle("hidden");
   });
-  const mediaQuery = window.matchMedia("(min-width: 768px)");
 
-  function handleTabletChange(e: MediaQueryListEvent | MediaQueryList) {
-    if (e.matches) {
+  const mediaQuery = window.matchMedia("(min-width: 768px)");
+  function handleTabletChange(event: MediaQueryListEvent | MediaQueryList) {
+    if (event.matches) {
       menu?.classList.add("hidden");
       menu?.classList.remove("flex");
     }

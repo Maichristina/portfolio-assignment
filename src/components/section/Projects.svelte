@@ -57,7 +57,7 @@
         on:click={() => toggle(project.id)}
       >
         <div class="flex justify-between items-center">
-          <span class="font-bold text-xl text-gray-4000"
+          <span class="font-bold text-xl text-gray-900"
             >{project.title[lang]}</span
           >
           <span class="text-gray-500"

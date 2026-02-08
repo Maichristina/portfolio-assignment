@@ -7,7 +7,6 @@
   let isInView = false;
   let profileData = null; //for data
   let error = null; //error handling
-  //lifecycle hook,run when the component is first rendered in the browser
 
   const content = {
     el: {
