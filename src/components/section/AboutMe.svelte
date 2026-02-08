@@ -52,7 +52,7 @@
       class="p-4 sm:p-10 bg-gray-100"
     >
       <h2 class="text-3xl font-bold text-gray-900 mb-6">
-        {content[lang].title}
+        {t.title}
       </h2>
 
       {#if profileData}
