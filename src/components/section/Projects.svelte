@@ -1,7 +1,6 @@
 <script>
-  //renders an interactive style of projects
   import { slide, fly } from "svelte/transition";
-  export let lang = "el"; //astro-svelte for lang
+  export let lang = "el";
 
   const projects = [
     {
@@ -33,6 +32,11 @@
     },
   ];
 
+  const mainTitle = {
+    en: "My Projects",
+    el: "Τα Projects μου",
+  };
+
   let selectedId = null; //which project is open
 
   //If the clicked project is already open, it closes it
@@ -43,7 +47,7 @@
 
 <section id="projects" class="mt-10 p-10 bg-gray-100">
   <h2 class="text-3xl font-bold text-gray-900">
-    {lang === "en" ? "My Projects" : "Τα Projects μου"}
+    {mainTitle[lang]}
   </h2>
 
   <div class="mt-4 space-y-4">

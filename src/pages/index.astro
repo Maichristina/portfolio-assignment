@@ -1,13 +1,9 @@
 ---
-//main page.nesting components inside MainLayout
+// index.astro
 import MainLayout from "../layouts/MainLayout.astro";
-
 import Hero from "../components/section/Hero.astro";
-
 import AboutMe from "../components/section/AboutMe.svelte";
-
 import Projects from "../components/section/Projects.svelte";
-
 import ContactForm from "../components/section/ContactForm.svelte";
 
 const lang = "el";
@@ -16,9 +12,11 @@ const lang = "el";
 <MainLayout title="Portfolio | WebEleven Assignment">
   <Hero lang={lang} />
 
-  <AboutMe client:load lang={lang} />
+  <AboutMe client:only="load" lang={lang} />
 
-  <Projects client:load lang={lang} />
+  <div id="projects">
+    <Projects client:visible lang={lang} />
+  </div>
 
-  <ContactForm client:load lang={lang} />
+  <ContactForm client:visible lang={lang} />
 </MainLayout>
